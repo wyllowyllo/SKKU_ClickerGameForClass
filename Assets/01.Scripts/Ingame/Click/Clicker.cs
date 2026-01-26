@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class Clicker : MonoBehaviour
 {
-    // 목적: 타겟을 클릭하면 클릭하고 싶다.
-    public LayerMask ClickLayer;
-    
-    
     private void Update()
     {
         // 1. 마우스 클릭을 감지한다.
@@ -27,7 +23,6 @@ public class Clicker : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
         if (hit == true)
         {
-            // 현재씨를 때릴떄는 OnCLick
             Clickable clickable = hit.collider.GetComponent<Clickable>();
             clickable?.OnClick();
         }
