@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Clicker : MonoBehaviour
 {
-    [SerializeField] private int _damage = 10;
-    
     private void Update()
     {
         // 1. 마우스 클릭을 감지한다.
@@ -32,7 +30,7 @@ public class Clicker : MonoBehaviour
             ClickInfo clickInfo = new ClickInfo
             {
                 Type = EClickType.Manual,
-                Damage = _damage,
+                Damage = GameManager.Instance.ManualDamage,
                 Position = hit.point,
             };
             

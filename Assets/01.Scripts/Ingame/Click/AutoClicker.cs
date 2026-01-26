@@ -4,7 +4,6 @@ using UnityEngine;
 public class AutoClicker : MonoBehaviour
 {
     // 역할: 정해진 시간 간격마다 Clickable한 친구를 때린다.
-    [SerializeField] private int _damage;           // 대미지
     [SerializeField] private float _interval;       // 시간 간격
     private float _timer;
 
@@ -27,7 +26,7 @@ public class AutoClicker : MonoBehaviour
                 ClickInfo clickInfo = new ClickInfo
                 {
                     Type = EClickType.Auto,
-                    Damage = _damage,
+                    Damage = GameManager.Instance.AutoDamage
                 };
                 
                 clickableScript.OnClick(clickInfo);
