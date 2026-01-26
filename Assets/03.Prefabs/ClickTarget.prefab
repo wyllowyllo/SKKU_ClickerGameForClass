@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7899416461430229147}
   - component: {fileID: 6201791030262719243}
   - component: {fileID: 983791490056308954}
-  - component: {fileID: 8130987313874777758}
   - component: {fileID: 1703294423884499719}
   - component: {fileID: 6545647234675595472}
   m_Layer: 6
@@ -148,7 +147,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 27.03125, y: 29.09375}
+    oldSize: {x: 4.8055553, y: 5.172222}
     newSize: {x: 27.03125, y: 29.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -169,20 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScaleTweeningFeedback
   _owner: {fileID: 0}
---- !u!114 &8130987313874777758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6652898311174458766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad9e710fdc3f954dac16f0e949d19f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorFlashFeedback
-  _spriteRenderer: {fileID: 8580115550764496691}
-  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _squashScaleX: 1.2
+  _squashScaleY: 0.85
+  _squashDuration: 0.1
+  _stretchScaleX: 0.9
+  _stretchScaleY: 1.15
+  _stretchDuration: 0.12
+  _recoverDuration: 0.15
+  _squashEase: 6
+  _stretchEase: 6
+  _recoverEase: 27
 --- !u!82 &1703294423884499719
 AudioSource:
   m_ObjectHideFlags: 0
