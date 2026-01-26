@@ -26,7 +26,7 @@ public class AutoClicker : MonoBehaviour
                 Clickable clickableScript = clickable.GetComponent<Clickable>();
                 ClickInfo clickInfo = new ClickInfo
                 {
-                    ClickType = EClickType.Auto,
+                    Type = EClickType.Auto,
                     Damage = _damage,
                 };
                 

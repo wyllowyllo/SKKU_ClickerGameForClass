@@ -31,8 +31,9 @@ public class Clicker : MonoBehaviour
 
             ClickInfo clickInfo = new ClickInfo
             {
-                ClickType = EClickType.Manual,
+                Type = EClickType.Manual,
                 Damage = _damage,
+                Position = hit.point,
             };
             
             clickable?.OnClick(clickInfo);
