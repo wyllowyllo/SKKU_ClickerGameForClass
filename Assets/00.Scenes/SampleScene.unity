@@ -24878,8 +24878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeverFlameEffect
   _flameRenderer: {fileID: 1395399404}
-  _flameScale: 1.05
-  _flameWidth: 2
+  _flameShader: {fileID: 4800000, guid: 99436681d230fa240bdddd07784516ae, type: 3}
+  _flameWidth: 0.06
   _intensity: 2
   _speed: 3
   _noiseScale: 10

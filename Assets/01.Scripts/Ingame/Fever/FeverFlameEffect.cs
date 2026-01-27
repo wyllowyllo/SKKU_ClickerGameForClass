@@ -3,6 +3,7 @@ using UnityEngine;
 public class FeverFlameEffect : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _flameRenderer;
+    [SerializeField] private Shader _flameShader;
 
     [Header("Shader")]
     [SerializeField] private float _flameWidth = 0.08f;
@@ -13,6 +14,7 @@ public class FeverFlameEffect : MonoBehaviour
 
     private Material _material;
 
+    private static readonly int PropSpriteRect = Shader.PropertyToID("_SpriteRect");
     private static readonly int PropFlameWidth = Shader.PropertyToID("_FlameWidth");
     private static readonly int PropIntensity = Shader.PropertyToID("_Intensity");
     private static readonly int PropSpeed = Shader.PropertyToID("_Speed");
@@ -21,9 +23,10 @@ public class FeverFlameEffect : MonoBehaviour
 
     private void Start()
     {
-        _material = new Material(Shader.Find("Custom/FeverFlame"));
+        _material = new Material(_flameShader);
         _flameRenderer.material = _material;
 
+        SetSpriteRect();
         ApplySettings();
 
         _flameRenderer.enabled = false;
@@ -40,6 +43,22 @@ public class FeverFlameEffect : MonoBehaviour
     private void Refresh()
     {
         _flameRenderer.enabled = FeverManager.Instance.IsFeverMode;
+    }
+
+    private void SetSpriteRect()
+    {
+        Sprite sprite = _flameRenderer.sprite;
+        Texture2D tex = sprite.texture;
+        Rect rect = sprite.textureRect;
+
+        // 텍스처 좌표 → 정규화 UV (아틀라스 대응)
+        Vector4 uvRect = new Vector4(
+            rect.x / tex.width,
+            rect.y / tex.height,
+            rect.xMax / tex.width,
+            rect.yMax / tex.height
+        );
+        _material.SetVector(PropSpriteRect, uvRect);
     }
 
     private void ApplySettings()
