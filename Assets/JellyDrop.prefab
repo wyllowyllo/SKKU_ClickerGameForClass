@@ -118,13 +118,12 @@ MonoBehaviour:
   - {fileID: -7567339895564184706, guid: 6aa8eb9d15623bf4da111d218bac14af, type: 3}
   - {fileID: 4987454491940261928, guid: 6aa8eb9d15623bf4da111d218bac14af, type: 3}
   - {fileID: 2597178044029038212, guid: 6aa8eb9d15623bf4da111d218bac14af, type: 3}
-  _launchForceY: 12
+  _launchForceY: 7
   _launchForceX: 4
-  _gravityScale: 3
   _scaleMin: 0.9
   _scaleMax: 1.2
-  _fadeDurationMin: 0.6
-  _fadeDurationMax: 1.6
+  _fadeDurationMin: 0.4
+  _fadeDurationMax: 1
 --- !u!50 &2662577454051590963
 Rigidbody2D:
   serializedVersion: 5
