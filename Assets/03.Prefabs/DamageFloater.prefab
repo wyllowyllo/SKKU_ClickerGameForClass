@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 41709489367218965}
   - component: {fileID: 8869998368290105259}
-  - component: {fileID: 7888152558163243036}
   - component: {fileID: 7227045177553860817}
+  - component: {fileID: 6936274697407673660}
   m_Layer: 0
   m_Name: DamageFloater
   m_TagString: Untagged
@@ -82,12 +82,31 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingLayerID: 996779933
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7888152558163243036
+--- !u!114 &7227045177553860817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296503863712118307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abebccbb6eaa942984dbd380d00cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageFloater
+  _damageText: {fileID: 6936274697407673660}
+  _floatDistance: 1
+  _duration: 0.8
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _normalScale: 1
+  _criticalColor: {r: 1, g: 0.9, b: 0.2, a: 1}
+  _criticalScale: 1.4
+--- !u!114 &6936274697407673660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12312322
+  m_text: <size=8><sprite=0></size>23423
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 015573da50ed04390be9f20287a541d6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 721413f4143f072418900658ca1c2703, type: 2}
@@ -182,16 +201,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8869998368290105259}
   m_maskType: 0
---- !u!114 &7227045177553860817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4296503863712118307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2abebccbb6eaa942984dbd380d00cb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageFloater
-  _text: {fileID: 7888152558163243036}

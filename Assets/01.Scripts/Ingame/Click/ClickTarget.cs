@@ -7,7 +7,9 @@ public class ClickTarget : MonoBehaviour, Clickable
 
    public bool OnClick(ClickInfo clickInfo)
    {
-      GameManager.Instance.Gold += clickInfo.Damage;
+      GameManager.Instance.AddGold(clickInfo.Damage);
+
+      clickInfo.Damage *= Random.Range(0.5f, 1.5f);
       
       // 클릭에대한 여러 가지 피드백을 보여줘야 합니다.
       // S : 한 클래스는 하나의 역할/책임만 가지자

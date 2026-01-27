@@ -201,7 +201,7 @@ Material:
     - _ShineGlow: 0.15
     - _ShineLocation: 0.291
     - _ShineRotate: 1.64
-    - _ShineWidth: 0.05
+    - _ShineWidth: 0.1
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TwistUvAmount: 1

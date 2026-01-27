@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // 게임 매니저라는 갓 클래스 (모든 데이터가 있다.)
@@ -5,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public static event Action OnDataChanged;
+    
     // 클리커게임의 숫자 단위는 억,조,경,해 ~~~~ 넘어가요.
     //                영어로  K, M, G, A, B, AA, TT ~~~
     public double ManualDamage = 238473234233434223239874d;          // 21억까지
@@ -19,12 +22,19 @@ public class GameManager : MonoBehaviour
   
 
     public double AutoDamage = 2233438473234233434223239874d;
-    public double Gold; 
+    private double _gold;
+    public double Gold => _gold;
     
     private void Awake()
     {
         Instance = this;
     }
-    
+
+    public void AddGold(double amount)
+    {
+        _gold += amount;
+        
+        OnDataChanged?.Invoke();
+    }
 
 }
