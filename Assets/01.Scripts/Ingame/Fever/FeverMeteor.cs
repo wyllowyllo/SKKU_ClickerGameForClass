@@ -8,7 +8,6 @@ public class FeverMeteor : MonoBehaviour, IPoolable
     // ─────────────────────────────────────────────────────────────
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private Sprite[] _jellySprites;
 
     // ─────────────────────────────────────────────────────────────
@@ -84,15 +83,11 @@ public class FeverMeteor : MonoBehaviour, IPoolable
         _rigidbody.gravityScale = _gravityScale;
         _rigidbody.linearVelocity = Vector2.zero;
         _rigidbody.angularVelocity = 0f;
-
-        // 트레일 리셋 (이전 궤적 잔상 제거)
-        _trailRenderer.Clear();
     }
 
     public void OnDespawn()
     {
         _rigidbody.linearVelocity = Vector2.zero;
         _rigidbody.angularVelocity = 0f;
-        _trailRenderer.Clear();
     }
 }
