@@ -7,20 +7,15 @@ public class ClickTarget : MonoBehaviour, Clickable
 
    public bool OnClick(ClickInfo clickInfo)
    {
-      Debug.Log($"{_name}: 다음부터는 늦지 않겠습니다.");
-      
       // 클릭에대한 여러 가지 피드백을 보여줘야 합니다.
-      
-      
       // S : 한 클래스는 하나의 역할/책임만 가지자
       // ClickTarget: 타겟에대한 중앙 관리자이자.. 소통의 창구(객체지향 상호작용) , 피드백을 실행시켜주는 역할도 
-
       var feedbacks = GetComponentsInChildren<IFeedback>();
       foreach (var feedback in feedbacks)
       {
          feedback.Play(clickInfo);
       }
-      
+
       // 'CBD' < ECS: 
       // 1. 클릭 이펙트
       // 2. 캐릭터 애니메이션(있으면)
@@ -33,16 +28,4 @@ public class ClickTarget : MonoBehaviour, Clickable
 
       return true;
    }
-
-
-   private void EffectFeedback()
-   {
-      
-   }
-
-   private void AnimationFeedback()
-   {
-      
-   }
-
 }
