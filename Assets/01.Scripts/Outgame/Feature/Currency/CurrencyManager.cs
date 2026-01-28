@@ -17,17 +17,21 @@ public class CurrencyManager : MonoBehaviour
    // 재화 데이터들 (배열로 관리)
    private double[] _currencies = new double[(int)ECurrencyType.Count];
    
+   // 저장소
+   private CurrencyRepository _repository;
    
    private void Awake()
    {
       Instance = this;
-   }
 
+      _repository = new CurrencyRepository();
+   }
 
    private void Start()
    {
-      Load();
+      _currencies = _repository.Load().Currencies;
    }
+   
    
    // 0. 재화 조회
    public double Get(ECurrencyType currencyType)
@@ -47,7 +51,10 @@ public class CurrencyManager : MonoBehaviour
    {
       _currencies[(int)type] += amount;
 
-      Save();
+      _repository.Save(new CurrencySaveData()
+      {
+         Currencies = _currencies
+      });
       
       OnDataChanged?.Invoke();
    }
@@ -59,7 +66,10 @@ public class CurrencyManager : MonoBehaviour
       {
          _currencies[(int)type] -= amount;
 
-         Save();
+         _repository.Save(new CurrencySaveData()
+         {
+            Currencies = _currencies
+         });
          
          OnDataChanged?.Invoke();
 
@@ -77,24 +87,15 @@ public class CurrencyManager : MonoBehaviour
    
    private void Save()
    {
+      // 0. 도대체 관리라는 책임이 어디까지야? 
+      // 저장하는 방식
       // 1. PlayerPrefs + double->string
       // 2. PlayerPrefs + double->json
-      
-      for (int i = 0; i < (int)ECurrencyType.Count; i++)
-      {
-         var type = (ECurrencyType)i;
-         PlayerPrefs.SetString(type.ToString(), _currencies[i].ToString("G17"));
-      }
+      // 3. CSV /Json으로 저장해주세요.
+      // 4. 서버에 저장합신다. // DB에저장합시다.
+      // 5. 플랫폼에 따라 다르게 저장: 유니티에서는 3번,, 빌드하고나면 4번으로 저장되게 해주세요..
+      // 6. Save 호출하면 Save가 더이상 호출되지 않은지 0.6초가 지나면 세이브되게...
    }
 
-   private void Load()
-   {
-      for (int i = 0; i < (int)ECurrencyType.Count; i++)
-      {
-         if (PlayerPrefs.HasKey(i.ToString()))
-         {
-            _currencies[i] = double.Parse(PlayerPrefs.GetString(i.ToString(), "0")); 
-         }
-      }
-   }
+  
 }
