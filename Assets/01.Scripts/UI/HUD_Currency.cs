@@ -12,12 +12,12 @@ public class HUD_Currency : MonoBehaviour
     {
         Refresh();
 
-        GameManager.OnDataChanged += Refresh;
+        CurrencyManager.OnDataChanged += Refresh;
     }
 
     private void Refresh()
     {
-        _goldText.text = GameManager.Instance.Gold.ToFormattedString();
+        _goldText.text = CurrencyManager.Instance.Gold.ToFormattedString();
 
         _goldText.transform.DOKill();
         _goldText.transform.localScale = Vector3.one;

@@ -9,7 +9,7 @@ public class ClickTarget : MonoBehaviour, Clickable
    {
       clickInfo.Damage *= FeverManager.Instance.FeverDamageMultiplier;
 
-      GameManager.Instance.AddGold(clickInfo.Damage);
+      CurrencyManager.Instance.AddGold(clickInfo.Damage);
       FeverManager.Instance.AddClick(clickInfo);
 
       clickInfo.Damage *= Random.Range(0.5f, 1.5f);
