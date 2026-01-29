@@ -22,6 +22,8 @@ public class Upgrade
     // 2. 핵심 규칙(유효성)을 작성한다.
     public Upgrade(UpgradeSpecData specData)
     {
+        SpecData = specData;
+        
         if (specData.MaxLevel < 0) throw new System.ArgumentException($"최대 레벨은 0보다 커야 합니다: {specData.MaxLevel}");
         if (specData.BaseCost <= 0) throw new System.ArgumentException($"기본 비용은 0보다 커야 합니다: {specData.BaseCost}");
         if (specData.BaseDamage <= 0) throw new System.ArgumentException($"기본 대미지는 0보다 커야 합니다: {specData.BaseDamage}");

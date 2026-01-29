@@ -84,7 +84,7 @@ public class CurrencyManager : MonoBehaviour
 
          return true;
       }
-
+      
       return false;
    }
    
