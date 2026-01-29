@@ -1,4 +1,5 @@
 using System;
+using NUnit.Framework;
 using UnityEngine;
 
 // '업그레이드'라는 게임 콘텐츼의 도메인 클래스다.
@@ -32,10 +33,16 @@ public class Upgrade
         if (string.IsNullOrEmpty(specData.Name)) throw new System.ArgumentException("이름은 비어있을 수 없습니다");
         if (string.IsNullOrEmpty(specData.Description)) throw new System.ArgumentException("설명은 비어있을 수 없습니다");
     }
+
+
+    public bool CanLevelUp()
+    {
+        return !IsMaxLevel;
+    }
     
     public bool TryLevelUp()
     {
-        if (IsMaxLevel) return false;
+        if (!CanLevelUp()) return false;
 
         Level++;
 

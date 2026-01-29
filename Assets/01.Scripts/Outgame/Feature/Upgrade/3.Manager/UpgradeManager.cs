@@ -33,10 +33,15 @@ public class UpgradeManager : MonoBehaviour
     
     public Upgrade Get(EUpgradeType type) => _upgrades[type] ?? null;
     public List<Upgrade> GetAll() => _upgrades.Values.ToList();
-
+    
     public bool CanLevelUp(EUpgradeType type)
     {
         if (!_upgrades.TryGetValue(type, out Upgrade upgrade))
+        {
+            return false;
+        }
+
+        if (!upgrade.CanLevelUp())
         {
             return false;
         }
