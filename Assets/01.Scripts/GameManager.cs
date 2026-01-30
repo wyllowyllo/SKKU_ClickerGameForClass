@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
 
-    public static event Action OnDataChanged;
+    // public static event Action OnDataChanged;
     
     // 클리커게임의 숫자 단위는 억,조,경,해 ~~~~ 넘어가요.
     //                영어로  K, M, G, A, B, AA, TT ~~~
-    public double ManualDamage = 1000000000d;          // 21억까지
+    // public double ManualDamage = 1000000000d;          // 21억까지
        
     // int(21억), long(경), biginteger(숫자를 쪼개 문자로관리하면서 연산하니까 매우 느립니다.)
     // float , double , decimal (부동소수점) 같은 자료형 크기 대비 범위가 엄청나게큽니다.
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     // double  10^900    (지구정도의 크기)       정밀도가 15자리인가되요.
     // decimal 10^283904 (은하계정도의 크기)      
 
-    public double AutoDamage = 1000000000d;
+    // public double AutoDamage = 1000000000d;
     
     private void Awake()
     {
