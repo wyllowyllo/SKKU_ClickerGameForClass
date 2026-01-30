@@ -11,16 +11,16 @@ public class Account
     public readonly string Email;
     public readonly string Password;
 
-    // ── 정규표현식 (컴파일하여 성능 최적화) ──
-    private static readonly Regex EmailRegex = new Regex(
-        @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-        RegexOptions.Compiled | RegexOptions.IgnoreCase
-    );
+  
     
     public Account(string email, string password)
     {
-        if(string.IsNullOrEmpty(email)) throw new ArgumentException($"이메일은 비어있을 수 없습니다.");
-        if (!EmailRegex.IsMatch(email)) throw new AggregateException($"올바르지 않은 이메일 형식입니다.");
+        var emailSpec = new AccountEmailSpecification();
+        if (!emailSpec.IsSatisfiedBy(email))
+        {
+            throw new ArgumentException(emailSpec.ErrorMessage);
+        }
+        
         if(string.IsNullOrEmpty(password)) throw new ArgumentException($"비밀번호는 비어있을 수 없습니다.");
         if(password.Length < 6 || 15 < password.Length) throw new ArgumentException($"비밀번호는 6~15자 사이어야합니다.");
         
