@@ -87,7 +87,7 @@ public class LoginScene : MonoBehaviour
         }
         
         // 4. 있다면 씬 이동
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     private void Register()
