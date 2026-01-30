@@ -55,79 +55,41 @@ public class LoginScene : MonoBehaviour
     private void Login()
     {
         // 로그인
-        // 1. 아이디 입력을 확인한다.
-        string id = _idInputField.text;
-        if (string.IsNullOrEmpty(id))
-        {
-            _messageTextUI.text = "아이디를 입력해주세요.";
-            return;
-        }
-        
-        // 2. 비밀번호 입력을 확인한다.
+        string email = _idInputField.text;
         string password = _passwordInputField.text;
-        if (string.IsNullOrEmpty(password))
+        
+        if (AccountManager.Instance.TryLogin(email, password))
         {
-            _messageTextUI.text = "패스워드를 입력해주세요.";
-            return;
+            SceneManager.LoadScene("MainScene");
+        }
+        else
+        {
+            _messageTextUI.text = "로그인에 실패했습니다.";
         }
         
-        // 3. 실제 저장된 아이디-비밀번호 계정이 있는지 확인한다.
-        // 3-1. 아이디가 있는지 확인한다.
-        if (!PlayerPrefs.HasKey(id))
-        {
-            _messageTextUI.text = "아이디/비밀번호를 확인해주세요.";
-            return;
-        }
-        
-        string myPassword = PlayerPrefs.GetString(id);
-        if (myPassword != password)
-        {
-            _messageTextUI.text = "아이디/비밀번호를 확인해주세요.";
-            return;
-        }
-        
-        // 4. 있다면 씬 이동
-        SceneManager.LoadScene("MainScene");
     }
 
     private void Register()
     {
-        // 로그인
-        // 1. 아이디 입력을 확인한다.
-        string id = _idInputField.text;
-        if (string.IsNullOrEmpty(id))
-        {
-            _messageTextUI.text = "아이디를 입력해주세요.";
-            return;
-        }
-        
-        // 2. 비밀번호 입력을 확인한다.
+        string email = _idInputField.text;
         string password = _passwordInputField.text;
-        if (string.IsNullOrEmpty(password))
-        {
-            _messageTextUI.text = "패스워드를 입력해주세요.";
-            return;
-        }
-        
-        // 2. 2ck 비밀번호 입력을 확인한다.
         string password2 = _passwordInputField.text;
+        
         if (string.IsNullOrEmpty(password2) || password != password2)
         {
             _messageTextUI.text = "패스워드를 확인해주세요.";
             return;
         }
-        
-        // 4. 실제 저장된 아이디-비밀번호 계정이 있는지 확인한다.
-        // 4-1. 아이디가 있는지 확인한다.
-        if (PlayerPrefs.HasKey(id))
+
+        if (AccountManager.Instance.TryRegister(email, password))
         {
-            _messageTextUI.text = "중복된 아이디입니다.";
-            return;
+            GotoLogin();
+        }
+        else
+        {
+            _messageTextUI.text = "회원가입에 실패했습니다.";
         }
 
-        PlayerPrefs.SetString(id, password);
-
-        GotoLogin();
     }
 
     private void GotoLogin()

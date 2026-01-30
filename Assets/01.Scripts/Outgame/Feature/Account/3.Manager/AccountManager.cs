@@ -7,7 +7,7 @@ using UnityEngine;
 // 2. 외부와의 소통 창구
 public class AccountManager : MonoBehaviour
 {
-    public AccountManager Instance { get; private set; }
+    public static AccountManager Instance { get; private set; }
 
     private Account _currentAccount = null;
     public bool IsLogin => _currentAccount != null;
