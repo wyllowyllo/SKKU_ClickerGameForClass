@@ -22,7 +22,7 @@ public class Account
         if(string.IsNullOrEmpty(email)) throw new ArgumentException($"이메일은 비어있을 수 없습니다.");
         if (!EmailRegex.IsMatch(email)) throw new AggregateException($"올바르지 않은 이메일 형식입니다.");
         if(string.IsNullOrEmpty(password)) throw new ArgumentException($"비밀번호는 비어있을 수 없습니다.");
-        if(password.Length < 6 || 15 < password.Length) throw new ArgumentException($"비밀번호는 6~16자 사이어야합니다.");
+        if(password.Length < 6 || 15 < password.Length) throw new ArgumentException($"비밀번호는 6~15자 사이어야합니다.");
         
         Email = email;
         Password = password;
