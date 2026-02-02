@@ -63,16 +63,7 @@ public class AccountManager : MonoBehaviour
 
     public AuthResult TryRegister(string email, string password)
     {
-        // 1. 이메일 중복검사
-        if (PlayerPrefs.HasKey(email))
-        {
-            return new AuthResult
-            {
-                Success = false,
-                ErrorMessage = "중복된 계정입니다.",
-            };
-        }
-        
+        // 유효성 검사
         try
         {
             Account account = new Account(email, password);
@@ -86,17 +77,26 @@ public class AccountManager : MonoBehaviour
             };
         }
         
-        // 3. 성공하면 저장!
-        PlayerPrefs.SetString(email, password);
-
-        return new AuthResult()
+        AuthResult result = _repository.Register(email, password);
+        if (result.Success)
         {
-            Success = true,
-        };
+            return new AuthResult
+            {
+                Success = true,
+            };
+        }
+        else
+        {
+            return new AuthResult()
+            {
+                Success = false,
+                ErrorMessage = result.ErrorMessage,
+            };
+        }
     }
 
     public void Logout()
     {
-        
+        _repository.Logout();
     }
 }
