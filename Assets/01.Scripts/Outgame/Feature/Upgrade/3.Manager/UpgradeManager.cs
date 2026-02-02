@@ -17,7 +17,7 @@ public class UpgradeManager : MonoBehaviour
     {
         Instance = this;
 
-        _repository = new JsonUpgradeRepository();
+        _repository = new JsonUpgradeRepository(AccountManager.Instance.Email);
         
         var saveData = _repository.Load();
         

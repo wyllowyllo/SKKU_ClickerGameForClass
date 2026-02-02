@@ -53,6 +53,10 @@ public class LoginScene : MonoBehaviour
         _registerButton.gameObject.SetActive(_mode == SceneMode.Register);
     }
 
+    private static readonly Regex EmailRegex = new Regex(
+        @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase
+    );
   
     public void OnEmailTextChanged(string email)
     {

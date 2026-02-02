@@ -5,9 +5,13 @@ public class JsonUpgradeRepository : IUpgradeRepository
 {
     private readonly string filePath;
 
-    public JsonUpgradeRepository()
+    private readonly string _userId;
+    
+    public JsonUpgradeRepository(string userId)
     {
-        filePath = Path.Combine(Application.persistentDataPath, "upgrade_save.json");
+        _userId = userId;
+        
+        filePath = Path.Combine(Application.persistentDataPath, $"{userId}_upgrade_save.json");
     }
 
     public void Save(UpgradeSaveData data)

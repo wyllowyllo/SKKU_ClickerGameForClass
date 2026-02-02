@@ -27,7 +27,7 @@ public class CurrencyManager : MonoBehaviour
    {
       Instance = this;
 
-      _repository = new LocalCurrencyRepository();
+      _repository = new LocalCurrencyRepository(AccountManager.Instance.Email);
       
       
       Currency currency1 = new Currency(10000);
